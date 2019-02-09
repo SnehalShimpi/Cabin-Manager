@@ -1,0 +1,117 @@
+
+
+/* basic setup */
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header
+{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7) , rgba(0, 0, 0, 0.7) ),url(/assets/1.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+html
+{
+    background-color: aliceblue;
+    font-family: sans-serif;
+    color:antiquewhite;
+    font-size:20px;
+    font-weight: 400;
+    text-rendering:optimizeLegibility;
+}
+
+/* NAVIGATION */
+ul
+{
+    list-style-type: none;
+    float: right;
+    margin-top: 15px;
+    margin-right: 25px;
+
+}
+ul li
+{
+    display: inline-block;
+    margin-right: 25px;
+}
+ul li a
+{
+    text-decoration: none;
+    color: white;
+    padding: 5px 20px;
+    border: 1px solid transparent;
+    transition: 0.6s ease;
+}
+ul li a:hover{
+    background-color: white;
+    color:black;
+}
+ul li.active a{
+    background-color: white;
+    color:black;
+}
+
+
+
+
+/* CENTER PART OF HOME PAGE  */
+
+.main
+{
+    width: 1200px;
+    margin: auto;
+}
+.title
+{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+title h1
+{
+    color: white;
+    font-size: 70px;
+}
+
+
+/* Button of home page */
+
+.button
+{
+    position:absolute;
+    top:60%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+.btn
+{
+    margin-top: 30px;
+    margin-right: 30px;
+    border: 1px solid #fff;
+    padding: 50px , 50px;
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    font-family: cursive;
+    font-weight: 100;
+    border-right: 100;
+}
+.btn:hover
+{
+    background-color:white;
+    color:black;
+    
+}
+body
+{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7) , rgba(0, 0, 0, 0.7) ),url(/assets/1.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}

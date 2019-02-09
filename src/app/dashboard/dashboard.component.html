@@ -1,0 +1,128 @@
+<html>
+  <header>
+
+      <ul>
+          <li><a href="home">Home</a></li>
+          <li><a href="home/login" (click)="login()">Login</a></li>
+          <li><a href="/home/register">Register</a></li>
+          <li><a href="/home" (click)="logOut()">Logout</a></li>
+          <li><a href="booking">Book Cabin</a></li>
+        
+          
+        </ul>  
+<div class="container" *ngIf="user">
+ 
+
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+
+<!------ Include the above in your HEAD tag ---------->
+
+<br><br> <h1 style="color:beige">Welcome {{user.firstname}}</h1>
+
+
+
+
+
+<div class="container-fluid well span4" style="margin-left: 1% ; height: 400px; width: 450px">
+
+	<div class="row-fluid" *ngIf="Cabin2">
+      <h2>Cabin 1</h2>
+
+    <div class="span10" *ngFor = "let book of Cabin1 | orderBy : 'date'">
+      
+      <h5 data-toggle="tooltip" data-placement="top" title="{{book.purpose}}">
+        Date :{{book.date | date}} &nbsp; 
+        Time: {{book.startTime}} - {{book.endTime}} &nbsp;
+         name : {{book.firstname}}
+         <div *ngIf="book.firstname == user.firstname">
+         
+          <form>
+            <a class="btn btn-defalut" href="/update/{{book._id}}">Update</a> &nbsp;
+            <a class="btn btn-defalut" href="/delete/{{book._id}}">Delete</a>
+          </form>
+         </div>
+          </h5>
+   </div>
+   </div>  
+       
+</div>
+
+
+
+
+
+<div class="container-fluid well span4" style="margin-right: 1%; height: 400px;width: 450px">
+	<div class="row-fluid">
+      <h2>Cabin 2</h2>
+    <div class="span8" *ngFor = "let book of Cabin2 | orderBy : 'date' ">
+      <h5 data-toggle="tooltip" data-placement="top" title="{{book.purpose}}">
+        Date :{{book.date | date}} &nbsp; 
+        Time: {{book.startTime}} - {{book.endTime}} &nbsp; 
+        name : {{book.firstname}}
+        <div  *ngIf="book.firstname == user.firstname">
+          <form>
+            <a class="btn btn-defalut" href="/update/{{book._id}}">Update</a> &nbsp;
+            <a class="btn btn-defalut" href="/delete/{{book._id}}">Delete</a>
+          </form></div>
+       </h5>
+</div>
+</div>
+</div>
+
+
+
+
+
+  <div class="container-fluid well span4" style="margin-left: 1%; height: 400px;width: 450px">
+    <div class="row-fluid">
+        <h2>Cabin 3</h2>
+      <div class="span8" *ngFor = "let book of Cabin3 | orderBy : 'date'">
+      
+        <h5 data-toggle="tooltip" data-placement="top" title="{{book.purpose}}">
+          Date :{{book.date | date}} &nbsp; 
+          Time: {{book.startTime}} - {{book.endTime}} &nbsp; 
+          name : {{book.firstname}}
+          <div *ngIf="book.firstname == user.firstname">
+            <form>
+              <a class="btn btn-defalut" href="/update/{{book._id}}">Update</a> &nbsp;
+              <a class="btn btn-defalut" href="/delete/{{book._id}}">Delete</a>
+            </form>
+          </div></h5>
+     </div>  
+         
+  </div>
+  </div>
+
+
+
+
+  <div class="container-fluid well span4" style="margin-right: 1%; height: 400px;width: 450px">
+    <div class="row-fluid">
+        <h2>Cabin 4</h2>
+         <div class="span8" *ngFor = "let book of Cabin4 | orderBy : 'date'">
+     
+      <h5 data-toggle="tooltip" data-placement="top" title="{{book.purpose}}">
+        Date :{{book.date | date}} &nbsp;
+         Time: {{book.startTime}} - {{book.endTime}} &nbsp;
+          name : {{book.firstname}}
+          <div *ngIf="book.firstname == user.firstname">
+          
+                <form>
+                  <a class="btn btn-defalut" href="/update/{{book._id}}">Update</a> &nbsp;
+                  <a class="btn btn-defalut" href="/delete/{{book._id}}">Delete</a>
+                </form>
+            </div></h5>
+   </div>
+         
+  </div>
+  </div>
+
+
+
+
+
+
+</div>
+</header>
+</html>
