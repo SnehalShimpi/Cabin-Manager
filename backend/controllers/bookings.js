@@ -68,7 +68,7 @@ var bookings = {
             function (err, docs) {
                 console.log(docs)
 
-                if (docs == null) {
+                if (docs.length < 1) {
                     flag = 0;
                 }
                 else {
@@ -95,6 +95,7 @@ var bookings = {
                         }
                         else {
                             flag = 0;
+                            break;
                         }
                         console.log("already exist");
 
