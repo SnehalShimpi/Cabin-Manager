@@ -21,6 +21,8 @@ import { UpdateComponent } from './update/update.component';
 import { InvalidPageComponent } from './invalid-page/invalid-page.component';
 import{DatePipe} from '@angular/common'
 import { OrderModule } from 'ngx-order-pipe';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +44,7 @@ import { OrderModule } from 'ngx-order-pipe';
     FormsModule,
     BsDatepickerModule.forRoot(),
     ToastrModule.forRoot(),
+    TimepickerModule.forRoot(),
     BrowserAnimationsModule,
     AmazingTimePickerModule,
     OrderModule

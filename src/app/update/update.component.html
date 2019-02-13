@@ -3,9 +3,9 @@
 
       <ul>
           <li><a href="home">Home</a></li>
-          <li><a href="home/login" (click)="login()">Login</a></li>
+         
           <li><a href="/dashboard">dashboard</a></li>
-          <li><a href="/home" (click)="logOut()">Logout</a></li>
+        
           <li><a href="booking">Book Cabin</a></li>
         
           
@@ -36,20 +36,18 @@
                
             
        
-              <div class="form-group" >
-                  <label class="col-sm-2 control-label" for="selectCabin">Select Cabin</label>
-                  <div class="col-sm-8">
-                      <select class="form-control" id="sel1" formControlName="name">
-                          <option disabled selected value>  </option>
-                        <option >cabin_1</option>
-                        <option >cabin_2</option>
-                        <option >cabin_3</option>
-                        <option >cabin_4</option>
-                       
-                        
-                      </select>
-                    </div>
-                </div>  
+            <div class="form-group" >
+              <label class="col-sm-2 control-label" for="selectCabin">Select Cabin</label>
+              <div class="col-sm-8">
+                  <select class="form-control" id="sel1" formControlName="name">
+                      <option disabled selected value>  </option>
+                    <option *ngFor="let C of Cabins">{{C.cabin}}</option>
+                
+                   
+                    
+                  </select>
+                </div>
+            </div>  
        
             
        
@@ -89,11 +87,15 @@
                          
                         </div>
                       </div> 
+
+                      <div *ngIf="flag == true" class="alert alert-danger">
+                        <strong>Warning!</strong> This time slot is reserved.
+                      </div>
             
             <div class="panel-footer">
                
               <form>
-                <button type="submit" class="btn btn-default" (click)="Update()">update</button>
+                <button type="submit" class="btn btn-default" [disabled]="flag" (click)="Update()">update</button>
                 <a class="btn btn-default" href="/home">cancel</a>
                 </form>
              <br>

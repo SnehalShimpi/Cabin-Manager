@@ -3,6 +3,7 @@ var router = express.Router();
 var users = require('./controllers/users.js');
 var bookings = require('./controllers/bookings.js')
 var userInfo = require('./controllers/UserInfo.js')
+var cabins = require('./controllers/cabins.js');
 
 
 console.log(router);
@@ -17,6 +18,10 @@ router.post('/secure/firstname',bookings.firstname);
 router.delete('/secure/delete/:id',bookings.Delete);
 router.put('/secure/update/:id',bookings.Update);
 router.post('/secure/getUserByID/:id',bookings.getBookinById);
+router.post('/secure/mail/',bookings.mail);
+router.post('/cabins',cabins.create);
+router.get('/cabins',cabins.getAll);
+router.post('/cabins/find',cabins.find);
 
 
 

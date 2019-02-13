@@ -3,8 +3,9 @@ import{UserService} from '../user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators, FormArray} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import{DatePipe} from '@angular/common'
-
+import{DatePipe} from '@angular/common';
+import{Cabin} from '../booking';
+import{User, Object1} from '../user';
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
@@ -13,7 +14,10 @@ import{DatePipe} from '@angular/common'
 export class UpdateComponent implements OnInit {
   public _id = String;
   userForm: FormGroup;
+  Cabins : Cabin[] = [];
   today = new Date();
+  obj = new Object1();
+  public flag = null;
   constructor(private service:UserService,private route: Router ,
     private Route : ActivatedRoute,
     private fb : FormBuilder,
@@ -35,11 +39,17 @@ export class UpdateComponent implements OnInit {
     var token = this.service.getToken();
     this.Route.params.subscribe(params =>{
       this._id = params['id'];
-      console.log(this._id);
+      //console.log(this._id);
     });
+
+    this.service.getCabin().subscribe((res : any)=> {console.log(res)
+      console.log(res.docs[0])
+      this.Cabins = res.docs;
+      console.log(this.Cabins);
+      });
     this.service.GetUserById(this._id,token).subscribe((res : any) => {
     
-
+    console.log(res);
    
      //console.log(date)
       this.userForm.patchValue({
@@ -49,21 +59,84 @@ export class UpdateComponent implements OnInit {
         startTime:res.doc.startTime,
         endTime:res.doc.endTime
       })
-      console.log(this.userForm.get('date').value)
-    } )
+      
+    })
+    this.onChanges();
+
   }
+  onChanges(){
+
+    this.userForm.get('name').valueChanges.subscribe(endTime => {
+         
+      this.obj.cabin = this.userForm.get('name').value;
+      this.obj.startTime =  this.userForm.get('startTime').value;
+      this.obj.endTime = this.userForm.get('endTime').value;
+      console.log(this.obj)
+     
+      this.service.findReserved(this.obj).subscribe((res : any) => {
+        console.log(res);
+        if(res.status == true){
+          this.flag = true;
+        }
+        else{
+          this.flag = false;
+        }
+      });
+    })
+
+    this.userForm.get('startTime').valueChanges.subscribe(endTime => {
+         
+      this.obj.cabin = this.userForm.get('name').value;
+      this.obj.startTime =  this.userForm.get('startTime').value;
+      this.obj.endTime = this.userForm.get('endTime').value;
+      console.log(this.obj)
+     
+      this.service.findReserved(this.obj).subscribe((res : any) => {
+        console.log(res);
+        if(res.status == true){
+          this.flag = true;
+        }
+        else{
+          this.flag = false;
+        }
+      });
+    })
+   
+    this.userForm.get('endTime').valueChanges.subscribe(endTime => {
+     
+      this.obj.cabin = this.userForm.get('name').value;
+      this.obj.startTime =  this.userForm.get('startTime').value;
+      this.obj.endTime = this.userForm.get('endTime').value;
+      console.log(this.obj)
+     
+     
+      this.service.findReserved(this.obj).subscribe((res : any) => {
+        console.log(res);
+        if(res.status == true){
+          this.flag = true;
+        }
+        else{
+          this.flag = false;
+        }
+      });
+    })
+  }
+
   Update(){
-   console.log(this.userForm.value);
+   //console.log(this.userForm.value);
      this.service.UpdateBooking(this._id,this.userForm.value).subscribe((res : any) =>{
        console.log(res);
        if(res.status == true){
-       
-      
-      
          this.T.success("successfully Updated record");
-        //  this.cancel();
-        //  this.route.navigateByUrl("/dashboard");
+         //this.cancel();
+         this.route.navigateByUrl("/dashboard");
        }
+       else {
+       console.log("false");
+      this.T.error("Not Updated record","Already Booked");
+        // this.cancel();
+        // this.route.navigateByUrl("/dashboard");
+      }
      });
    }
    cancel(){

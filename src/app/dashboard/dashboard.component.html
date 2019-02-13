@@ -23,16 +23,15 @@
 
 
 
-
+<div *ngFor="let No of k; let i = index">
 <div class="container-fluid well span4" style="margin-left: 1% ; height: 400px; width: 450px">
 
-	<div class="row-fluid" *ngIf="Cabin2">
-      <h2>Cabin 1</h2>
-
-    <div class="span10" *ngFor = "let book of Cabin1 | orderBy : 'date'">
-      
-      <h5 data-toggle="tooltip" data-placement="top" title="{{book.purpose}}">
-        Date :{{book.date | date}} &nbsp; 
+	<div class="row-fluid">
+      <h2>Cabin {{i+1}}</h2>
+      <div class="span10" *ngFor = "let book of booking | orderBy : 'date'">
+       <div *ngIf="book.name === No.cabin">
+       <h5 data-toggle="tooltip" data-placement="top" title="{{book.purpose}}">
+        Date :{{book.date }} &nbsp; 
         Time: {{book.startTime}} - {{book.endTime}} &nbsp;
          name : {{book.firstname}}
          <div *ngIf="book.firstname == user.firstname">
@@ -44,20 +43,22 @@
          </div>
           </h5>
    </div>
+   </div>
    </div>  
        
+</div>
 </div>
 
 
 
 
 
-<div class="container-fluid well span4" style="margin-right: 1%; height: 400px;width: 450px">
+<!-- <div class="container-fluid well span4" style="margin-right: 1%; height: 400px;width: 450px">
 	<div class="row-fluid">
       <h2>Cabin 2</h2>
     <div class="span8" *ngFor = "let book of Cabin2 | orderBy : 'date' ">
       <h5 data-toggle="tooltip" data-placement="top" title="{{book.purpose}}">
-        Date :{{book.date | date}} &nbsp; 
+        Date :{{book.date }} &nbsp; 
         Time: {{book.startTime}} - {{book.endTime}} &nbsp; 
         name : {{book.firstname}}
         <div  *ngIf="book.firstname == user.firstname">
@@ -68,19 +69,19 @@
        </h5>
 </div>
 </div>
-</div>
+</div> -->
 
 
 
 
 
-  <div class="container-fluid well span4" style="margin-left: 1%; height: 400px;width: 450px">
+  <!-- <div class="container-fluid well span4" style="margin-left: 1%; height: 400px;width: 450px">
     <div class="row-fluid">
         <h2>Cabin 3</h2>
       <div class="span8" *ngFor = "let book of Cabin3 | orderBy : 'date'">
       
         <h5 data-toggle="tooltip" data-placement="top" title="{{book.purpose}}">
-          Date :{{book.date | date}} &nbsp; 
+          Date :{{book.date}} &nbsp; 
           Time: {{book.startTime}} - {{book.endTime}} &nbsp; 
           name : {{book.firstname}}
           <div *ngIf="book.firstname == user.firstname">
@@ -93,17 +94,17 @@
          
   </div>
   </div>
+ -->
 
 
 
-
-  <div class="container-fluid well span4" style="margin-right: 1%; height: 400px;width: 450px">
+  <!-- <div class="container-fluid well span4" style="margin-right: 1%; height: 400px;width: 450px">
     <div class="row-fluid">
         <h2>Cabin 4</h2>
          <div class="span8" *ngFor = "let book of Cabin4 | orderBy : 'date'">
      
       <h5 data-toggle="tooltip" data-placement="top" title="{{book.purpose}}">
-        Date :{{book.date | date}} &nbsp;
+        Date :{{book.date}} &nbsp;
          Time: {{book.startTime}} - {{book.endTime}} &nbsp;
           name : {{book.firstname}}
           <div *ngIf="book.firstname == user.firstname">
@@ -117,7 +118,7 @@
          
   </div>
   </div>
-
+ -->
 
 
 
