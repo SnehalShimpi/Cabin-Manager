@@ -264,14 +264,14 @@ mail: function (req, res) {
                var transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: 'snehalshimpi11@gmail.com',
-                    pass: 'laxman@11'
+                    user: 'abc@gmail.com',
+                    pass: '**********'
                 }
             });
 
             var mailOptions = {
                 
-                from: "snehalshimpi11@gmail.com",
+                from: "abc@gmail.com",
                 to: decode.email,
            
                 subject: 'Sending Email For booking',
